@@ -21,23 +21,30 @@ const Form = () => {
         setProductData({ ...productData, [e.target.name]: e.target.value });
     };
     const handleSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-        if (!imageFile || !token) return alert("الصورة أو التوكن مفقود");
-        const formData = new FormData();
-        formData.append("images", imageFile);
-        const result: any = await dispatch(addproductsimage({ token, formData }));
-        const imageUrls = result.payload;
+    e.preventDefault();
+    if (!imageFile || !token) return alert("الصورة أو التوكن مفقود");
 
-        const finalPayload = {
-            ...productData,
-            price: parseFloat(productData.price),
-            discountPrice: parseFloat(productData.discountPrice),
-            stock: parseInt(productData.stock),
-            images: imageUrls,
-        };
+    const formData = new FormData();
+    formData.append("images", imageFile);
 
-        dispatch(createProduct({ token, productData: finalPayload }));
+    const result = await dispatch(addproductsimage({ token, formData }));
+    if (!addproductsimage.fulfilled.match(result)) {
+        return alert("فشل رفع الصورة");
+    }
+
+    const imageUrls = result.payload; // نوع آمن ومفحوص
+
+    const finalPayload = {
+        ...productData,
+        price: parseFloat(productData.price),
+        discountPrice: parseFloat(productData.discountPrice),
+        stock: parseInt(productData.stock),
+        images: imageUrls,
     };
+
+    dispatch(createProduct({ token, productData: finalPayload }));
+};
+
     return (
         <div>
             <MotionWrapper>

@@ -45,15 +45,15 @@ const Products = () => {
     const getTranslated = (val: string) =>
         locale === "ar" ? t(val).toLowerCase() : val.toLowerCase();
 
-    const filteredItems = useMemo(() => {
-        return items.filter((i) => {
-            const name = getTranslated(i.name);
-            return (
-                name.includes(searchQuery.toLowerCase()) &&
-                (selectedCategory === "" || i.categoryId === selectedCategory)
-            );
-        });
-    }, [items, searchQuery, selectedCategory, t]);
+   const filteredItems = useMemo(() => {
+    return items.filter((i) => {
+        const name = getTranslated(i.name);
+        return (
+            name.includes(searchQuery.toLowerCase()) &&
+            (selectedCategory === "" || i.categoryId === selectedCategory)
+        );
+    });
+}, [items, searchQuery, selectedCategory, getTranslated]);
 
     const groupedItems = useMemo(() => {
         const groups = [];
@@ -68,7 +68,7 @@ const Products = () => {
             toast.success(l(message));
             dispatch(clearmessage());
         }
-    }, [message]);
+    }, [message,l,dispatch]);
     return (
         <section className="mt-40">
             <div className="container">

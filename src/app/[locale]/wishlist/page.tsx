@@ -26,7 +26,7 @@ const WishlistPage = () => {
             const parsed = JSON.parse(wishlist);
             dispatch(loadWishlist(parsed));
         }
-    }, []);
+    }, [dispatch]);
      useEffect(() => {
             if (message) {
                 toast.success(t(message));
