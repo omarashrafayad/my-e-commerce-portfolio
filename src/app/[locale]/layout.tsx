@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';

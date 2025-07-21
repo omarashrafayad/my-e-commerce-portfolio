@@ -14,7 +14,6 @@ import { toast } from "sonner";
 import Link from "next/link";
 import { loadWishlist } from "@/redux/wishlistslice";
 import { clearCart } from "@/redux/cartslice";
-import axios from "axios";
 
 
 export default function ProfilePage() {
