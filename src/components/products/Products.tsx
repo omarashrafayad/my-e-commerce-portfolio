@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef, useMemo } from "react";
+import { useEffect, useState, useRef, useMemo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@/redux/store";
 import { deleteproduct, GetProducts } from "@/redux/productslice";
@@ -42,8 +42,10 @@ const Products = () => {
 
     const isLoading = useMemo(() => items.length === 0, [items]);
 
-    const getTranslated = (val: string) =>
-        locale === "ar" ? t(val).toLowerCase() : val.toLowerCase();
+    const getTranslated = useCallback(
+    (val: string) => (locale === "ar" ? t(val).toLowerCase() : val.toLowerCase()),
+    [locale, t]
+);
 
    const filteredItems = useMemo(() => {
     return items.filter((i) => {

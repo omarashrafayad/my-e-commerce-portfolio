@@ -155,7 +155,7 @@ export const IncreasQuantity = createAsyncThunk(
       );
 
       const updatedItem = res.data.data.items.find(
-        (item: any) => item.productId._id === productId
+        (item: Products) => item.productId._id === productId
       );
 
       return {
@@ -201,7 +201,7 @@ export const decreaseQuantity = createAsyncThunk(
       );
 
       const updatedItem = res.data.data.items.find(
-        (item: any) => item.productId._id === productId
+        (item: Products) => item.productId._id === productId
       );
 
       return {
