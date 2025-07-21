@@ -26,8 +26,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-      <body>
-        <GoogleOAuthProvider clientId="532924579171-ss8bvsv6s0q963rsojp79o33mk7d9d99.apps.googleusercontent.com">
+      <body className='bg-white text-black'>
         <ReduxWrapper>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <ClientToaster/>
@@ -39,7 +38,6 @@ export default async function LocaleLayout({
             </MotionWrapper>
           </NextIntlClientProvider>
         </ReduxWrapper>
-        </GoogleOAuthProvider>
       </body>
     </html>
   );

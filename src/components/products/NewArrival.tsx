@@ -8,7 +8,7 @@ import Link from "next/link";
 const NewArrival = () => {
   const t = useTranslations('newArrival')
   const locale = useLocale()
-  const alignment = locale === "ar" ? "bottom-6 right-6" : "bottom-6 left-6";
+  const alignment = locale === "ar" ? "bottom-5 right-5" : "bottom-5 left-5";
   return (
     <article className="mt-24">
       <div className="container ">
@@ -34,13 +34,13 @@ const NewArrival = () => {
               className="object-contain"
             />
             <div className={`absolute text-white max-w-[80%] ${alignment}`}>
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">
+              <h2 className="text-lg max-md:text-sm  font-semibold mb-2">
                 {t('playstationTitle')}
               </h2>
-              <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-2">
+              <p className="text-xs max-md:text-xs text-gray-300 mb-2">
                 {t('playstationDescription')}
               </p>
-               <Link href={`/${locale}/products`} aria-label="products" className="underline text-xs sm:text-sm transition-all duration-500 hover:text-[var(--color-secondary)]">
+                <Link href={`/${locale}/products`} aria-label="products" className="underline text-xs  transition-all duration-500 hover:text-[var(--color-secondary)]">
                   {t('shopNow')}
                 </Link>
             </div>
@@ -57,13 +57,13 @@ const NewArrival = () => {
                 className="object-contain"
               />
               <div className={`absolute text-white max-w-[80%] ${alignment}`}>
-                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">
+                <h2 className="text-lg max-md:text-sm font-semibold mb-2">
                   {t('womenTitle')}
                 </h2>
-                <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-2">
+                <p className="text-xs max-md:text-xs text-gray-300 mb-2">
                   {t('womenDescription')}
                 </p>
-                <Link href={`/${locale}/products`} aria-label="products" className="underline text-xs sm:text-sm transition-all duration-500 hover:text-[var(--color-secondary)]">
+                <Link href={`/${locale}/products`} aria-label="products" className="underline text-xs transition-all duration-500 hover:text-[var(--color-secondary)]">
                   {t('shopNow')}
                 </Link>
               </div>
@@ -72,20 +72,20 @@ const NewArrival = () => {
             <div className="flex gap-6 flex-1 basis-1/2">
               <div className="relative bg-black rounded-lg overflow-hidden w-1/2">
                 <Image
-                  src="/images/speaker.png"
+                  src="/images/speaker3.png"
                   alt="Speakers"
                   fill
                   loading="lazy"
                   className="object-cover"
                 />
                 <div className={`absolute text-white max-w-[80%] ${alignment}`}>
-                  <h2 className="text-base sm:text-lg font-semibold mb-2">
+                  <h2 className="max-md:text-sm font-semibold mb-2">
                     {t('speakersTitle')}
                   </h2>
-                  <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-2">
+                  <p className="max-md:text-xs text-sm text-gray-300 mb-2">
                     {t('speakersDescription')}
                   </p>
-                 <Link href={`/${locale}/products`} aria-label="products" className="underline text-xs sm:text-sm transition-all duration-500 hover:text-[var(--color-secondary)]">
+                 <Link href={`/${locale}/products`} aria-label="products" className="underline text-xs transition-all duration-500 hover:text-[var(--color-secondary)]">
                   {t('shopNow')}
                 </Link>
                 </div>
@@ -99,13 +99,13 @@ const NewArrival = () => {
                   className="object-cover"
                 />
                 <div className={`absolute text-white max-w-[80%] ${alignment}`}>
-                  <h2 className="text-base sm:text-lg font-semibold mb-2">
+                  <h2 className="max-md:text-sm font-semibold mb-2">
                     {t('perfumeTitle')}
                   </h2>
-                  <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-2">
+                  <p className="max-md:text-xs text-sm text-gray-300 mb-2">
                     {t('perfumeDescription')}
                   </p>
-                  <Link href={`/${locale}/products`} aria-label="products" className="underline text-xs sm:text-sm transition-all duration-500 hover:text-[var(--color-secondary)]">
+                  <Link href={`/${locale}/products`} aria-label="products" className="underline text-xs transition-all duration-500 hover:text-[var(--color-secondary)]">
                   {t('shopNow')}
                 </Link>
                 </div>

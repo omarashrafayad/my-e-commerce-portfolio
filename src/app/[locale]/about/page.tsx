@@ -39,14 +39,14 @@ const About = () => {
                 <div className='flex flex-wrap  gap-5 items-center max-md:flex-col'>
                     <div className='flex-1'>
                     <MotionWrapper>
-                        <h1 className='text-5xl mb-5 font-bold'>{t('title')}</h1>
+                        <h1 className='text-5xl mb-5 font-bold max-md:text-3xl'>{t('title')}</h1>
                         <p className='mb-3'>{t('paragraph1')}</p>
                         <p>{t('paragraph2')}</p>
                 </MotionWrapper>
                     </div>
                     <div className='flex-1'>
                 <MotionWrapper>
-                        <Image src="/images/About.jpg" loading='lazy' alt="Company Overview" width={700} height={700} className='rounded-sm object-cover' />
+                        <Image src="/images/About.jpg" loading='lazy' alt="Company Overview" width={800} height={800} className='rounded-sm object-cover' />
                     </MotionWrapper>
                     </div>
                 </div>
@@ -54,13 +54,13 @@ const About = () => {
                     {
                         stats.map((stat)=>(
                             <MotionWrapper key={stat.id}>
-                            <div className='border-2 border-[#ddd] rounded text-center p-2 transition-all duration-500 hover:bg-[var(--color-secondary)] hover:text-white w-[220px] h-[150px]'>
-                                <div className=' bg-black text-white mx-auto w-fit rounded-full p-1 mb-4 border-8 border-gray-300 '>
-                                {stat.icon}
+                           <div className="flex flex-col gap-2 border-2 rounded border-[#ddd] text-center w-[250px] h-[175px] p-4">
+                                    <div className="bg-black text-white mx-auto rounded-full p-2 mb-3 border-8 border-gray-300">
+                                        {stat.icon}
+                                    </div>
+                                    <h1 className="text-2xl font-bold">{stat.value}</h1>
+                                    <p className="text-sm">{t(stat.label)}</p>
                                 </div>
-                                <h3>{stat.value}</h3>
-                                <p>{t(stat.label)}</p>
-                            </div>
                             </MotionWrapper>
                         ))
                     }

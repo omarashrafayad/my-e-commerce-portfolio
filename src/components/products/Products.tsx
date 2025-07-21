@@ -144,7 +144,6 @@ const Products = () => {
                             >
                                 {groupedItems.map((group, index) => (
                                     <SwiperSlide key={group[0]?._id || index}>
-                                        <MotionWrapper>
                                             <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4">
                                                 {group.map((item) => (
                                                     <MotionWrapper key={item._id}>
@@ -209,7 +208,7 @@ const Products = () => {
                                                     </MotionWrapper>
                                                 ))}
                                             </div>
-                                        </MotionWrapper>
+                                      
                                     </SwiperSlide>
                                 ))}
                             </Swiper>

@@ -25,7 +25,7 @@ const SideBar = ({ menu, setMenu }: { menu: boolean; setMenu: React.Dispatch<Rea
     return (
         <div
             className={`
-                fixed top-[75px] ${locale === "en" ? "left-0" : "right-0"} h-screen  w-[300px]
+                fixed top-[75px] ${locale === "en" ? "left-0" : "right-0"} min-h-[100vh] overflow-y-auto  w-[300px]
                 bg-[var(--color-secondary)] text-white z-40
                 transition-transform duration-1000 ease-in-out
                 transform ${menu ? "translate-x-0" : `${locale === "en" ? "-translate-x-full" : "translate-x-full"}`}

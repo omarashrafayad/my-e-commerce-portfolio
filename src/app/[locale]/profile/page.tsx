@@ -14,6 +14,7 @@ import { toast } from "sonner";
 import Link from "next/link";
 import { loadWishlist } from "@/redux/wishlistslice";
 import { clearCart } from "@/redux/cartslice";
+import axios from "axios";
 
 
 export default function ProfilePage() {
@@ -55,23 +56,33 @@ export default function ProfilePage() {
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
   const errorMap: Record<string, string> = {
     "Password must be at least 6 characters long.": "password_too_short",
     "Phone number must be between 10 and 15 digits.": "invalid_phone",
     "Email must be a valid email address.": "invalid_email"
   };
-  e.preventDefault();
+
   try {
     await dispatch(updateUserProfile({ userId, formData })).unwrap();
     toast.success(t('updated'));
-  } catch (err) {
-    if (err instanceof Error) {
-      const key = errorMap[err.message] || err.message;
-      toast.error(t(key));
-    } else {
-      toast.error(String(err));
-    }
+  } catch (err: unknown) {
+  let message: string;
+
+  if (typeof err === 'string') {
+    message = err;
+  } else if (Array.isArray(err) && typeof err[0] === 'string') {
+    message = err[0];
+  } else if (err instanceof Error) {
+    message = err.message;
+  } else {
+    message = 'unexpected_error';
   }
+
+  const key = errorMap[message] || message;
+  toast.error(t(key));
+}
 };
 
     return (

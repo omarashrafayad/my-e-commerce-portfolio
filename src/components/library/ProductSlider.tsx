@@ -15,32 +15,32 @@ const ProductSlider = () => {
 
 const items = [
     {
-        image: "/images/item2.png",
+        image: "/images/young-bearded-man-with-striped-shirt.png",
         name: "mike_brown",
         role: "frontend",
     },
     {
-        image: "/images/item3.png",
+        image: "/images/handsome-smiling-man-looking-with-disbelief-removebg-preview.png",
         name: "robert_davis",
         role: "marketing",
     },
     {
-        image: "/images/item4.png",
+        image: "/images/smiling_caucasian_guy_with_beard_looking_happy_removebg_preview.png",
         name: "john_smith",
         role: "uiux",
     },
     {
-        image: "/images/item5.png",
+        image: "/images/waist_up_portrait_handsome_serious_unshaven_male_keeps_hands_together.png",
         name: "william_white",
         role: "content",
     },
     {
-        image: "/images/item6.png",
+        image: "/images/handsome-bearded-guy-posing-against-white-wall.png",
         name: "daniel_lee",
         role: "art",
     },
     {
-        image: "/images/item7.png",
+        image: "/images/close_up_young_caucasian_guy_with_beard_smiling_looking_happy_camera.png",
         name: "david_kim",
         role: "software",
     },

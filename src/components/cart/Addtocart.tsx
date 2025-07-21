@@ -26,14 +26,14 @@ const Addtocart = ({ item }: { item: Products }) => {
     ).unwrap();
     toast.success(t('added'));
   } catch (err) {
-    const loginErrorMessage = "Failed to add item to cart: input must be a 24 character hex string, 12 byte Uint8Array, or an integer";
+  const errorMessage = typeof err === "string" ? err : "Unexpected error";
 
-    if (err instanceof Error) {
-      toast.error(err.message === loginErrorMessage ? t('Login First') : t(err.message));
-    } else {
-      toast.error(t(String(err)));
-    }
+  if (errorMessage.includes("input must be a 24 character hex string")) {
+    toast.error(t("Login First"));
+  } else {
+    toast.error(t(errorMessage));
   }
+}
 };
 
     return (

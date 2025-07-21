@@ -84,13 +84,30 @@ const Page = () => {
 
     return (
         <div className="mt-28">
-            {loading ? (
-                <div className="flex items-center justify-center flex-col">
+            {
+                !token || !userId ? (
+                <div className="flex justify-center flex-col items-center h-[21vh]">
+                    <h1 className="text-3xl font-bold mb-3">
+                        {t('empty')} <span className="text-[var(--color-secondary)]">{t('emtty')}</span>
+                    </h1>
+                    <Link
+                        href={`/${locale}/products`}
+                        aria-label="products"
+                        className={`flex text-[var(--color-secondary)] gap-1 ${locale === 'ar' ? 'flex-row-reverse' : ''
+                            }`}
+                    >
+                        <ArrowLeft size={20} />
+                        <span>{t('returnShopping')}</span>
+                    </Link>
+                </div>
+) :
+            loading ? (
+                <div className="flex items-center justify-center flex-col h-[21vh]">
                     <div className="loading"></div>
                     <p className="text-gray-500 text-sm mt-2">{l("loading")}</p>
                 </div>
             ) : carts.length === 0 ? (
-                <div className="flex justify-center flex-col items-center">
+                <div className="flex justify-center flex-col items-center h-[21vh]">
                     <h1 className="text-3xl font-bold mb-3">
                         {t('empty')} <span className="text-[var(--color-secondary)]">{t('emtty')}</span>
                     </h1>

@@ -23,7 +23,7 @@ const Page  = () => {
     };
     return (
         <div className='mt-30'>
-            <div className='container flex items-center flex-wrap gap-5 max-md:text-center max-md:flex-col'>
+            <div className='container flex  flex-wrap gap-5 max-md:text-center max-md:flex-col'>
                 <div className='flex-2'>
                     <MotionWrapper>
                         <div className=' mb-5 '>
@@ -34,7 +34,7 @@ const Page  = () => {
                                 <span className='font-semibold'>{t('callToUs')}</span>
                             </div>
                             <h4 className='mb-3 text-sm'>{t('available')}</h4>
-                            <h3 className='text-sm'>{t('phone')}: +8801611112222</h3>
+                            <h3 className='text-sm'>{t('phone')}: 01013102794</h3>
                         </div>
                         <div className=''>
                             <div className='flex items-center mb-5 max-md:justify-center gap-2'>
@@ -44,8 +44,8 @@ const Page  = () => {
                                 <span className='font-semibold'>{t('emailUs')}</span>
                             </div>
                             <h4 className='mb-3 text-sm'>{t('contactWithin')}</h4>
-                            <h3 className='text-sm mb-2'>{t('emails')}: customer@exclusive.com</h3>
-                            <h3 className='text-sm'>{t('emails')}: customer@exclusive.com</h3>
+                            <h3 className='text-sm mb-2'>{t('emails')}: omar.ayad3040@gmail.com</h3>
+                            <h3 className='text-sm'>{t('emails')}: omar.ayad2048@gmail.com</h3>
                         </div>
                     </MotionWrapper>
                 </div>

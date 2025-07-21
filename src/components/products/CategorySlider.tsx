@@ -13,7 +13,7 @@ const CategorySlider = () => {
     const t = useTranslations('titles')
     const locale = useLocale()
     return (
-        <section className="w-full mt-28 " aria-label="Featured Categories Slider" >
+        <section className="w-full mt-28 container " aria-label="Featured Categories Slider" >
             <Swiper
                 modules={[Pagination]}
                 pagination={{ clickable: true }}
@@ -24,7 +24,7 @@ const CategorySlider = () => {
                 {categorySlides.map((category) => (
                     <SwiperSlide key={category.id}>
                         <MotionWrapper>
-                            <div className="flex container justify-between items-center bg-black h-[350px] overflow-hidden rounded-sm">
+                            <div className="flex px-5 justify-between items-center bg-black h-[350px] overflow-hidden rounded-sm">
                                 <div>
                                     <h4 className='text-[var(--color-secondary)]'>{t('category')}</h4>
                                     <h2 className="text-5xl  text-white font-bold my-4 max-md:text-xl max-md:my-2">{t(category.title)}</h2>
@@ -41,7 +41,7 @@ const CategorySlider = () => {
                                         width={300}
                                         height={300}
                                         loading="lazy"
-                                        className="rounded-xl"
+                                        className="rounded-xl max-md:w-[200px] max-md:h-[200px] object-cover"
                                     />
                                 </div>
                             </div>

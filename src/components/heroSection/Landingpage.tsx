@@ -8,8 +8,8 @@ const Landingpage = () => {
     const t = useTranslations('banner');
     const locale = useLocale()
     return (
-        <section className={`relative h-[calc(100vh-75px)] top-[75px] ${locale === "en" ? "bg-gradient-to-r from-black to-[var(--color-secondary)]" : "bg-gradient-to-l from-black to-[var(--color-secondary)]"}`}>
-            <div className="container h-full flex items-center justify-between
+        <section className={`relative h-[calc(100vh-75px)] top-[75px] min-h[500px] max-h-[750px] overflow-hidden ${locale === "en" ? "bg-gradient-to-r from-black to-[var(--color-secondary)]" : "bg-gradient-to-l from-black to-[var(--color-secondary)]"}`}>
+            <div className="container h-full flex items-center justify-around
                 max-md:flex-col">
                 <div className="">
                     <AnimatedTitle text={t('text')} id="hero-title" />
@@ -25,7 +25,7 @@ const Landingpage = () => {
                 </div>
                 <div>
                     <Image
-                        src="/images/view.png"
+                        src="/images/landing100 (1).png"
                         alt="Landing page product showcase"
                         width={400}
                         height={400}

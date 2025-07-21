@@ -35,11 +35,11 @@ const WishlistPage = () => {
         }, [message,t,dispatch]);
 
     return (
-        <div className='mt-28'>
-            <h1 className="text-lg font-bold mb-8">
+        <div className='mt-21'>
+            <div className='container'>
+              <h1 className="text-lg font-bold mb-4">
                 {t('WishList')} ({Favourites.length})
-            </h1>
-            <div className='container '>
+            </h1> 
                 {Favourites.length === 0 ? (
                     <div className="flex flex-col justify-center items-center">
                         <h1 className="text-3xl font-bold" role="alert"
@@ -57,7 +57,9 @@ const WishlistPage = () => {
                         </div>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4" role="list">
+                  
+                  
+                     <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4" role="list">
                         {Favourites.map((fav) => (
                             <div
                                 key={fav._id} role="listitem"
@@ -94,6 +96,8 @@ const WishlistPage = () => {
                             </div>
                         ))}
                     </div>
+                    
+                   
                 )}
 
             </div>
