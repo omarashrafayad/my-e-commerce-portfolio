@@ -30,9 +30,13 @@ const CartMobile = () => {
                 toast.success(t('quantityDecreased'))
             }
         }
-        catch (err: any) {
-            toast.error(err)
-        }
+        catch (err) {
+  if (err instanceof Error) {
+    toast.error(err.message);
+  } else {
+    toast.error(String(err));
+  }
+}
     }
 
     const handledelete = (item: Products) => {
@@ -40,9 +44,13 @@ const CartMobile = () => {
             dispatch(DeleteCart({ userId, productId: item.productId._id, token })).unwrap();
             toast.success(t('delete'))
         }
-        catch (err: any) {
-            toast.error(err)
-        }
+        catch (err) {
+  if (err instanceof Error) {
+    toast.error(err.message);
+  } else {
+    toast.error(String(err));
+  }
+}
     }
     const handleIncreaseQuantity = (item: Products) => {
         try {
@@ -54,9 +62,13 @@ const CartMobile = () => {
             })).unwrap();
             toast.success(t('quantityIncreased'))
         }
-        catch (err: any) {
-            toast.error(err)
-        }
+        catch (err) {
+  if (err instanceof Error) {
+    toast.error(err.message);
+  } else {
+    toast.error(String(err));
+  }
+}
     }
     return (
                         <div className="md:hidden">

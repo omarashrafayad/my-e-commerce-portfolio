@@ -5,7 +5,7 @@ import { AppDispatch, RootState } from "@/redux/store";
 import { useLocale, useTranslations } from "next-intl";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import UpdateCategories from "./UpdatedCategories";
+// import UpdateCategories from "./UpdatedCategories";
 
 type CategoriesProps = {
     onCategorySelect: (id: string | null) => void;

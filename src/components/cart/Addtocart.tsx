@@ -11,24 +11,31 @@ const Addtocart = ({ item }: { item: Products }) => {
     const t = useTranslations('products')
     const dispatch = useDispatch<AppDispatch>()
     const { token, userId } = useSelector((state: RootState) => state.auth);
-    const addCart = async (item: Products, e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        try {
-            const res = await dispatch(
-                AddToCart({
-                    token,
-                    userId,
-                    productId: item._id,
-                    quantity: 1,
-                    price: item.price,
-                    name: item.name,
-                })
-            ).unwrap();
-            toast.success(t('added'));
-        } catch (err: any) {
-            toast.error(err === "Failed to add item to cart: input must be a 24 character hex string, 12 byte Uint8Array, or an integer" ? `${t('Login First')}` : `${t(err)}`)
-        }
-    };
+   const addCart = async (item: Products, e: React.MouseEvent<HTMLButtonElement>) => {
+  e.preventDefault();
+  try {
+    await dispatch(
+      AddToCart({
+        token,
+        userId,
+        productId: item._id,
+        quantity: 1,
+        price: item.price,
+        name: item.name,
+      })
+    ).unwrap();
+    toast.success(t('added'));
+  } catch (err) {
+    const loginErrorMessage = "Failed to add item to cart: input must be a 24 character hex string, 12 byte Uint8Array, or an integer";
+
+    if (err instanceof Error) {
+      toast.error(err.message === loginErrorMessage ? t('Login First') : t(err.message));
+    } else {
+      toast.error(t(String(err)));
+    }
+  }
+};
+
     return (
         <>
             <button

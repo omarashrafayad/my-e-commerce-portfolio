@@ -2,6 +2,15 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Products } from "@/lib/types";
 
+export interface ProductInput {
+  name: string;
+  description: string;
+  price: number;
+  discountPrice: number;
+  stock: number;
+  categoryId: string;
+  images: string[];
+}
 interface ProductItem {
   Items: Products[];
   loading: "idle" | "loading" | "succeeded" | "failed";
@@ -18,9 +27,12 @@ export const GetProducts = createAsyncThunk<Products[], void, { rejectValue: str
         params: { page: 1, limit: 32 },
       });
       return res.data.data;
-    } catch (err: any) {
-      return rejectWithValue(err.response?.data?.message || "Server Error");
-    }
+    } catch (err: unknown) {
+  if (axios.isAxiosError(err)) {
+    return rejectWithValue(err.response?.data?.message || "Server Error");
+  }
+  return rejectWithValue("Unexpected Error");
+}
   }
 );
 
@@ -35,13 +47,16 @@ export const addproductsimage = createAsyncThunk<string[], { token: string; form
         },
       });
       return res.data.data.imageUrls;
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || "Image upload failed");
-    }
+    } catch (error: unknown) {
+  if (axios.isAxiosError(error)) {
+    return rejectWithValue(error.response?.data?.message || "Image upload failed");
+  }
+  return rejectWithValue("Unexpected Error");
+}
   }
 );
 
-export const createProduct = createAsyncThunk<Products, { token: string; productData: any }, { rejectValue: string }>(
+export const createProduct = createAsyncThunk<Products, { token: string; productData: ProductInput }, { rejectValue: string }>(
   "products/createProduct",
   async ({ token, productData }, { rejectWithValue }) => {
     try {
@@ -52,9 +67,12 @@ export const createProduct = createAsyncThunk<Products, { token: string; product
         },
       });
       return res.data.data;
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || "Product creation failed");
-    }
+    }catch (error: unknown) {
+  if (axios.isAxiosError(error)) {
+    return rejectWithValue(error.response?.data?.message || "Product creation failed");
+  }
+  return rejectWithValue("Unexpected Error");
+}
   }
 );
 
@@ -68,9 +86,12 @@ export const deleteproduct = createAsyncThunk<string, { token: string; id: strin
         },
       });
       return id;
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || "Product deletion failed");
-    }
+    } catch (error: unknown) {
+ if (axios.isAxiosError(error)) {
+  return rejectWithValue(error.response?.data?.message || "Product delete failed");
+}
+return rejectWithValue("Unexpected Error");
+}
   }
 );
 
@@ -94,9 +115,12 @@ export const updateproducts = createAsyncThunk<Products, {
         },
       });
       return response.data.data;
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || "Product update failed");
-    }
+    } catch (error: unknown) {
+ if (axios.isAxiosError(error)) {
+  return rejectWithValue(error.response?.data?.message || "Product Update failed");
+}
+return rejectWithValue("Unexpected Error");
+}
   }
 );
 

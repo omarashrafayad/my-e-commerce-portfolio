@@ -14,6 +14,12 @@ interface UserState {
   error: string | null;
   successMessage: string | null;
 }
+interface UserInput {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+}
 
 const initialState: UserState = {
   data: {
@@ -40,17 +46,20 @@ export const fetchUserProfile = createAsyncThunk(
       });
 
       return res.data.data;
-    } catch (error: any) {
-      const message = error.response?.data?.message || "فشل تحميل البيانات";
-      return rejectWithValue(message);
-    }
+    } catch (error: unknown) {
+  if (axios.isAxiosError(error)) {
+    const message = error.response?.data?.message || "فشل تحميل البيانات";
+    return rejectWithValue(message);
+  }
+  return rejectWithValue("Unexpected error occurred");
+}
   }
 );
 
 export const updateUserProfile = createAsyncThunk(
   "user/updateProfile",
   async (
-    { userId, formData }: { userId: string; formData: any },
+    { userId, formData }: { userId: string; formData: UserInput },
     { rejectWithValue }
   ) => {
     try {
@@ -68,11 +77,14 @@ export const updateUserProfile = createAsyncThunk(
       );
 
       return res.data.data;
-    } catch (error: any) {
-      const message =
-        error.response?.data?.message || "حدث خطأ أثناء التحديث";
-      return rejectWithValue(message);
-    }
+    }  catch (error: unknown) {
+  if (axios.isAxiosError(error)) {
+    const message =
+      error.response?.data?.message || "حدث خطأ أثناء التحديث";
+    return rejectWithValue(message);
+  }
+  return rejectWithValue("Unexpected error occurred");
+}
   }
 );
 

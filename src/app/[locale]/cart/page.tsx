@@ -12,7 +12,7 @@ import { Products } from '@/lib/types'
 import MotionWrapper from '@/components/library/MotionWrapper'
 import CartMobile from '@/components/cart/CartMobile'
 
-const CartPage = () => {
+const Page = () => {
     const t = useTranslations('cart')
     const l = useTranslations('products')
     const locale = useLocale()
@@ -42,9 +42,13 @@ const CartPage = () => {
                 toast.success(t('quantityDecreased'))
             }
         }
-        catch (err: any) {
-            toast.error(err)
-        }
+        catch (err) {
+  if (err instanceof Error) {
+    toast.error(err.message);
+  } else {
+    toast.error(String(err));
+  }
+}
     }
 
     const handledelete = async (item: Products) => {
@@ -52,9 +56,13 @@ const CartPage = () => {
             await dispatch(DeleteCart({ userId, productId: item.productId._id, token })).unwrap();
             toast.success(t('delete'))
         }
-        catch (err: any) {
-            toast.error(err)
-        }
+        catch (err) {
+  if (err instanceof Error) {
+    toast.error(err.message);
+  } else {
+    toast.error(String(err));
+  }
+}
     }
     const handleIncreaseQuantity = async (item: Products) => {
         try {
@@ -65,9 +73,13 @@ const CartPage = () => {
                 quantity: item.quantity + 1
             })).unwrap();
             toast.success(t('quantityIncreased'));
-        } catch (err: any) {
-            toast.error(err);
-        }
+        } catch (err) {
+  if (err instanceof Error) {
+    toast.error(err.message);
+  } else {
+    toast.error(String(err));
+  }
+}
     };
 
     return (
@@ -134,12 +146,12 @@ const CartPage = () => {
                                                     <div className={`flex items-center justify-center gap-4 ${locale === "ar" ? "flex-row-reverse" : ""} `}>
                                                         <button
                                                             aria-label={t('quantityDecreased')}
-                                                            className="w-6 h-6 rounded-xs bg-gray-200 hover:bg-gray-300 transition duration-200"
+                                                            className="w-6 h-6 rounded-xs bg-gray-200 hover:bg-gray-300 transition duration-200 cursor-pointer"
                                                             onClick={() => handleDecreseQuantity(item)}>−</button>
                                                         <span className="text-center">{item.quantity}</span>
                                                         <button
                                                             aria-label={t('quantityIncreased')}
-                                                            className="w-6 h-6 rounded-xs bg-gray-200 hover:bg-gray-300 transition duration-200"
+                                                            className="w-6 h-6 rounded-xs bg-gray-200 hover:bg-gray-300 transition duration-200 cursor-pointer"
                                                             onClick={() => handleIncreaseQuantity(item)}>+</button>
                                                     </div>
                                                 </td>
@@ -186,4 +198,4 @@ const CartPage = () => {
     )
 }
 
-export default CartPage
+export default Page

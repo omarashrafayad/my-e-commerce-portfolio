@@ -19,11 +19,11 @@ export const GetAllCategories = createAsyncThunk(
         try {
             const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`);
             return res.data.data;
-        } catch (error: any) {
-            if (error.response) {
+        } catch (error: unknown) {
+            if (axios.isAxiosError(error)) {
                 throw new Error("not found");
             } else {
-                throw new Error("not server");
+                throw new Error("server error");
             }
         }
     }
@@ -48,9 +48,11 @@ export const createCategories = createAsyncThunk(
             );
 
             return res.data.data;
-        } catch (error: any) {
-            const message =
-                error.response?.data?.message || "category creation failed";
+        } catch (error: unknown) {
+            let message = "category creation failed";
+            if (axios.isAxiosError(error)) {
+                message = error.response?.data?.message ?? message;
+            }
             return rejectWithValue(message);
         }
     }
@@ -85,9 +87,11 @@ export const updateCategories = createAsyncThunk(
             );
 
             return res.data.data;
-        } catch (error: any) {
-            const message =
-                error.response?.data?.message || "update category failed";
+        } catch (error: unknown) {
+            let message = "update category failed";
+            if (axios.isAxiosError(error)) {
+                message = error.response?.data?.message ?? message;
+            }
             return rejectWithValue(message);
         }
     }

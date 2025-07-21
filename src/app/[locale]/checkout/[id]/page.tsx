@@ -7,7 +7,17 @@ import { useSelector } from "react-redux";
 import { Products } from "@/lib/types";
 import { CheckCircle } from "lucide-react";
 import MotionWrapper from "@/components/library/MotionWrapper";
-
+interface Order {
+  _id: string;
+  shippingAddress: {
+    fullName: string;
+    street: string;
+    city: string;
+    country: string;
+  };
+  totalPrice: number;
+  items: Products[];
+}
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const OrderSuccessPage = () => {
@@ -15,7 +25,7 @@ const OrderSuccessPage = () => {
   const l = useTranslations("products");
   const locale = useLocale();
   const { id } = useParams();
-  const [order, setOrder] = useState<any>(null);
+  const [order, setOrder] = useState<Order | null>(null);
   const token = useSelector((state: RootState) => state.auth.token);
   const [loading, setLoading] = useState(true);
 

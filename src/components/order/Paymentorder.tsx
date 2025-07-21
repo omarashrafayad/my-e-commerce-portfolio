@@ -62,9 +62,13 @@ const Paymentorder: React.FC<PaymentProps> = ({ formData }) => {
         try {
             const res = await dispatch(CreateOrder({ token, orderPayload })).unwrap();
             router.push(`/checkout/${res._id}`);
-        } catch (error: any) {
-            toast.error(error);
-        }
+        }  catch (error) {
+    if (error instanceof Error) {
+        toast.error(error.message);
+    } else {
+        toast.error(String(error));
+    }
+}
     };
     return (
         <div className="flex flex-col gap-3">

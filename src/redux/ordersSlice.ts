@@ -14,6 +14,27 @@ interface Products {
   updatedAt: string;
   quantity: number;
 }
+interface OrderItem {
+  productId: string;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
+interface ShippingAddress {
+  fullName: string;
+  street: string;
+  city: string;
+  postalCode: string;
+  country: string;
+}
+
+interface OrderPayload {
+  userId: string;
+  items: OrderItem[];
+  totalPrice: number;
+  shippingAddress: ShippingAddress;
+}
 
 interface ProductItem {
   Orders: Products[];
@@ -33,7 +54,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 export const CreateOrder = createAsyncThunk(
   "Orders/CreateOrder",
   async (
-    { token, orderPayload }: { token: string; orderPayload: any },
+    { token, orderPayload }: { token: string; orderPayload: OrderPayload },
     { rejectWithValue }
   ) => {
     try {
@@ -48,8 +69,11 @@ export const CreateOrder = createAsyncThunk(
         }
       );
       return res.data.data;
-    } catch (error: any) {
-      const message = error.response?.data?.message || "Order creation failed";
+    } catch (error: unknown) {
+      let message = "Order creation failed";
+      if (axios.isAxiosError(error)) {
+        message = error.response?.data?.message ?? message;
+      }
       return rejectWithValue(message);
     }
   }

@@ -25,7 +25,7 @@ const AnimatedTitle = ({ text, id }: { text: string, id?: string }) => {
     const parts = isTextArabic ? text.split(" ") : text.split("");
 
     return (
-        <h1 className="text-5xl font-bold mb-5 text-[var(--color-secondary)]  max-md:text-2xl flex flex-wrap gap-1">
+        <h1 className="text-5xl font-bold mb-5 text-[var(--color-secondary)]  max-md:text-2xl flex flex-wrap gap-1"id={id}>
             {parts.map((part, i) => (
                 <motion.span
                     key={i}

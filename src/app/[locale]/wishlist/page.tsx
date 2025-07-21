@@ -32,7 +32,7 @@ const WishlistPage = () => {
                 toast.success(t(message));
                 dispatch(clearmessage());
             }
-        }, [message]);
+        }, [message,t,dispatch]);
 
     return (
         <div className='mt-28'>

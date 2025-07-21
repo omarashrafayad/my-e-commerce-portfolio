@@ -6,9 +6,8 @@ import { AppDispatch, RootState } from "@/redux/store";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import RatingStars from "@/components/library/RatingStars";
-import { Heart, RefreshCcw, Truck } from "lucide-react";
+import { RefreshCcw, Truck } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
 import Addtocart from "@/components/cart/Addtocart";
 import Togglewishlist from "@/components/products/Togglewishlist";
 import { toast } from "sonner";
@@ -47,7 +46,7 @@ const ProductPage = ({ params }: { params: Promise<{ id: string }> }) => {
       toast.success(f(message));
       dispatch(clearmessage());
     }
-  }, [message]);
+  }, [message,f,dispatch]);
   useEffect(() => {
     const fetchProduct = async () => {
       try {

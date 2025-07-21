@@ -55,25 +55,25 @@ export default function ProfilePage() {
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
-        const errorMap: Record<string, string> = {
-            "Password must be at least 6 characters long.": "password_too_short",
-            "Phone number must be between 10 and 15 digits.": "invalid_phone",
-            "Email must be a valid email address.": "invalid_email"
-        };
-        e.preventDefault();
-        try {
-            await dispatch(updateUserProfile({ userId, formData })).unwrap();
-            toast.success(t('updated'))
-        }
-       catch (err: any) {
-        const firstError = Array.isArray(err) ? err[0] : err;
-
-        const key = errorMap[firstError] || firstError || "unknown_error";
-
-        toast.error(t(key));
+  const errorMap: Record<string, string> = {
+    "Password must be at least 6 characters long.": "password_too_short",
+    "Phone number must be between 10 and 15 digits.": "invalid_phone",
+    "Email must be a valid email address.": "invalid_email"
+  };
+  e.preventDefault();
+  try {
+    await dispatch(updateUserProfile({ userId, formData })).unwrap();
+    toast.success(t('updated'));
+  } catch (err) {
+    if (err instanceof Error) {
+      const key = errorMap[err.message] || err.message;
+      toast.error(t(key));
+    } else {
+      toast.error(String(err));
     }
+  }
+};
 
-    };
     return (
         <div className="my-28">
             <h2 className="container text-sm text-right">
