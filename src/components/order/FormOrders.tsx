@@ -46,7 +46,7 @@ const FormOrders: React.FC<FormProps> = ({ formData, setFormData }) => {
                                 name={id}
                                 value={formData[id as keyof typeof formData] || ''}
                                 onChange={handleChange}
-                                className="w-full border p-2 rounded bg-[#d5d5d5] outline-none"
+                                className="w-full border p-2 rounded bg-[#f5f5f5] outline-none"
                             />
                         </div>
                     ))}
