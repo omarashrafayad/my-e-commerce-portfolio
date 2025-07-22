@@ -3,7 +3,7 @@ import { NavLinks } from "@/lib/types";
 import { useLocale } from "next-intl";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { Store, User, UserPlus } from "lucide-react";
+import {  User, UserPlus } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useEffect } from "react";
