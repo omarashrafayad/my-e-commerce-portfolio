@@ -58,6 +58,23 @@ const Navbar = () => {
                                 </li>
                             );
                         })}
+                        {
+    !token && !userId ? (
+        <li>
+            <Link 
+                href={`/${locale}/login`} 
+                aria-label={`${t('signup')}`} 
+                className={`relative cursor-pointer before:absolute before:left-0 before:bottom-[-5px] before:h-0.5 before:bg-[var(--color-secondary)]
+                before:transition-all before:duration-300 before:content-[''] hover:scale-105 duration-300 transition-all ${
+                    pathname === `/${locale}/login` ? "before:w-full text-[var(--color-secondary)]" : "before:w-0"
+                }`}
+            >
+                {t('signup')}
+            </Link>
+        </li>
+    ) : null
+}
+
                     </ul>
                 </nav>
                 <div className="flex gap-4 items-center max-md:hidden">

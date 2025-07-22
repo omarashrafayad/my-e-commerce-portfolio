@@ -10,6 +10,7 @@ import ClientToaster from '@/components/library/ClientToaster';
 import MotionWrapper from '@/components/library/MotionWrapper';
 
 
+
 export default async function LocaleLayout({
   children,
   params
@@ -24,7 +25,7 @@ export default async function LocaleLayout({
   const messages = (await import(`@/../messages/${locale}.json`)).default;
 
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} >
       <body className='bg-white text-black'>
         <ReduxWrapper>
           <NextIntlClientProvider locale={locale} messages={messages}>

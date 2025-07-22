@@ -10,11 +10,12 @@ const Togglewishlist = ({item}:{item:Products}) => {
     const Favourites = useSelector((state: RootState) => state.wishlist.Favourite)
     const dispatch = useDispatch<AppDispatch>()
     return (
-            <>
-                <Heart size={20} onClick={() => {
+            <button aria-label={Favourites.some(fav => fav._id === item._id) ? "حذق من المفضلة" : "اضافة الى المفضلة"}
+            onClick={() => {
                     dispatch(ToggleToWishlist(item))
-                }} fill={Favourites.some(fav => fav._id === item._id) ? "red" : "none"} />
-            </>
+                }}>
+                <Heart size={20}  fill={Favourites.some(fav => fav._id === item._id) ? "red" : "none"} />
+            </button>
     )
 }
 

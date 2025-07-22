@@ -102,12 +102,12 @@ const CartMobile = () => {
                                                     onClick={() => handleIncreaseQuantity(item)}>+</button>
                                             </div>
                                             <strong className="mt-2 text-sm">{t("subtotal")}: {locale === "ar" ? `${(item.price * item.quantity).toFixed(2)}$` : `$${(item.price * item.quantity).toFixed(2)}`}</strong>
-                                            <button onClick={() => handledelete(item)} aria-label='delete'
+                                            <button onClick={() => handledelete(item)} aria-label={t('remove')}
                                                 className={`text-sm cursor-pointer text-[var(--color-secondary)] mt-2 inline-block ${locale === "ar" ? "text-right" : "text-left"}`}>{t('remove')}</button>
                                         </div>
                                     </div>
                                 </div>
-                                        </MotionWrapper>
+                                </MotionWrapper>
                             ))}
                         </div>
   )

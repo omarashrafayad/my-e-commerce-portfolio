@@ -155,7 +155,7 @@ const Page = () => {
                                                     <div>
                                                         <p>{getLocalized(item.name)}</p>
                                                         <button onClick={() => handledelete(item)}
-                                                            className='text-[var(--color-secondary)] text-sm cursor-pointer' aria-label="delete"  >{t('remove')}</button>
+                                                            className='text-[var(--color-secondary)] text-sm cursor-pointer' aria-label={t('remove')}>{t('remove')}</button>
                                                     </div>
                                                 </td>
                                                 <td className='text-center '><p>${item.price}</p></td>

@@ -4,6 +4,7 @@ import { Mail, Phone } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import { toast } from 'sonner'
 import MotionWrapper from '@/components/library/MotionWrapper'
+
 const Page  = () => {
     const t = useTranslations('contact')
     const l = useTranslations('Orders')

@@ -92,13 +92,27 @@ const ProductPage = ({ params }: { params: Promise<{ id: string }> }) => {
             <div className="flex items-center gap-3">
               <span >{t('colors')}:</span>
               <ul className="flex gap-2">
-                {
-                  colors.map((color) => (
-                    <button key={color.id} aria-label={`Select color ${color.hex}`} className={`w-4 h-4 rounded-full cursor-pointer ${selectedColor === color.id ? " border-2 border-white outline-2 outline-black" : ""}`} style={{ backgroundColor: color.hex }}
-                      onClick={() => setSelectedColor(color.id)}></button>
-                  ))
-                }
-              </ul>
+  {colors.map((color) => {
+    const colorNames: Record<number, string> = {
+      1: locale === "ar" ? "أزرق" : "Blue",
+      2: locale === "ar" ? "أحمر" : "Red",
+      3: locale === "ar" ? "أخضر" : "Green",
+    };
+
+    return (
+      <button
+        key={color.id}
+        aria-label={colorNames[color.id]}
+        className={`w-5 h-5 rounded-full border cursor-pointer ${selectedColor === color.id ? "border-2 border-black" : ""}`}
+        style={{ backgroundColor: color.hex }}
+        onClick={() => setSelectedColor(color.id)}
+      >
+        <span className="sr-only">{colorNames[color.id]}</span>
+      </button>
+    );
+  })}
+</ul>
+
             </div>
             <div className="flex items-center gap-3">
               <span >{t('size')}:</span>

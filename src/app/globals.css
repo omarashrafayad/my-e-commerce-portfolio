@@ -31,12 +31,12 @@ body {
 }
 
 .swiper-pagination-bullet {
-  background-color: #fff !important; /* لون الدوائر غير المفعّلة */
+  background-color: #fff !important; 
   opacity: 1;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #ededed !important; /* لون الدائرة المفعّلة */
+  background-color: #ededed !important; 
 }
 
 .global{

@@ -5,6 +5,7 @@ import ProductSlider from '@/components/library/ProductSlider';
 import BenefitsBanner from '@/components/library/BenefitsBanner';
 import { useTranslations } from 'next-intl';
 import MotionWrapper from '@/components/library/MotionWrapper';
+
 const About = () => {
     const t = useTranslations('about')
     const stats = [

@@ -3,7 +3,7 @@ import { NavLinks } from "@/lib/types";
 import { useLocale } from "next-intl";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { User } from "lucide-react";
+import { Store, User, UserPlus } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useEffect } from "react";
@@ -48,6 +48,15 @@ const SideBar = ({ menu, setMenu }: { menu: boolean; setMenu: React.Dispatch<Rea
                             onClick={() => setMenu(false)}>
                             <span className="inline-block "><User /></span>
                             {t("profile")}
+                        </Link>
+                    </li> : null
+                    }
+                    {!token && !userId ?
+                    <li>
+                        <Link href={`/${locale}/login`} aria-label={t("signup")} className="py-5 flex items-center transition-all duration-300 hover:scale-110 gap-2"
+                            onClick={() => setMenu(false)}>
+                            <span className="inline-block "><UserPlus /></span>
+                            {t("signup")}
                         </Link>
                     </li> : null
                     }

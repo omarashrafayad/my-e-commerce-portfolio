@@ -94,7 +94,7 @@ const items = [
                             </div>
                             <h3 className="text-lg font-semibold">{t(item.name)}</h3>
                             <p className="text-sm text-gray-500 mb-3">{t(item.role)}</p>
-                           <div className="flex gap-4 justify-center text-gray-600 ">
+                        <div className="flex gap-4 justify-center text-gray-600 ">
                                 <div className="bg-[#EEE] p-1.5 rounded-full">
                                     <Facebook className="w-5 h-5 hover:text-blue-600 transition-all duration-500" aria-label="Facebook profile"/>
                                 </div>
