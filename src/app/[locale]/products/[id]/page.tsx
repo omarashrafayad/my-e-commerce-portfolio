@@ -50,11 +50,9 @@ const ProductPage = ({ params }: { params: Promise<{ id: string }> }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-         const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+      const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
       const res = await fetch(`${BASE_URL}/api/products/${id}`);
       const data = await res.json();
-
-
         if (res.ok) {
           setProduct(data.data);
         } else {

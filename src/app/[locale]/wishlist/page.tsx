@@ -27,6 +27,7 @@ const WishlistPage = () => {
             dispatch(loadWishlist(parsed));
         }
     }, [dispatch]);
+    
      useEffect(() => {
             if (message) {
                 toast.success(t(message));

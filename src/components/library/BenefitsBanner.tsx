@@ -34,7 +34,7 @@ const BenefitsBanner = () => {
                 <Icon className='w-7 h-7' aria-hidden="true"/>
               </div>
               <h2 className="font-bold mb-1 text-lg">{t(benefit.title)}</h2>
-              <p className="text-sm text-gray-600">{t(benefit.description)}</p>
+              <p className="text-xs text-gray-600">{t(benefit.description)}</p>
             </article>
               </MotionWrapper>
           );

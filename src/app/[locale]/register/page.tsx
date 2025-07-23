@@ -21,7 +21,7 @@ export default function RegisterPage() {
         const handleRegister = async (e:React.FormEvent)=>{
         e.preventDefault();
         try{
-const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, {
                 method:'post',
                 headers: {'Content-Type': 'application/json'},
                 body:JSON.stringify({name,email,password})
@@ -82,7 +82,7 @@ const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, 
                             />
                             <label
                                 htmlFor="name"
-                               className={`absolute  top-2 text-gray-500 text-sm cursor-text
+                            className={`absolute  top-2 text-gray-500 text-sm cursor-text
                                     peer-focus:text-xs peer-focus:-top-3 peer-focus:text-[var(--color-secondary)]
                                     peer-valid:text-xs peer-valid:-top-3 peer-valid:text-[var(--color-secondary)]
                                     transition-all  ${locale === "ar"?"right-0":"left-0"}`}

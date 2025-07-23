@@ -170,10 +170,10 @@ const Products = () => {
                                                             </p>
                                                             <div className="flex gap-3">
                                                                 <p className="text-[var(--color-secondary)]">
-                                                                    {item.price - item.discountPrice}
+                                                                    ${item.price - item.discountPrice}
                                                                 </p>
                                                                 <p className="line-through text-gray-400">
-                                                                    {item.price}
+                                                                    ${item.price}
                                                                 </p>
                                                             </div>
                                                             <RatingStars rating={4.5} count={105} />

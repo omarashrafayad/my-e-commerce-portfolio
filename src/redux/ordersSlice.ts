@@ -1,19 +1,8 @@
+import { Products } from "@/lib/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-interface Products {
-  _id: string;
-  name: string;
-  description: string;
-  price: number;
-  discountPrice: number;
-  stock: number;
-  images: string[];
-  categoryId: string;
-  createdAt: string;
-  updatedAt: string;
-  quantity: number;
-}
+
 interface OrderItem {
   productId: string;
   name: string;

@@ -91,6 +91,7 @@ const Paymentorder: React.FC<PaymentProps> = ({ formData }) => {
                             key={src}
                             src={`/images/${src}`}
                             alt="Visa logo" 
+                            aria-label={`/images/${src}`}
                             width={45}
                             height={45}
                             loading="lazy"

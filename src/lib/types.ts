@@ -1,5 +1,5 @@
 
-import { Home, MessageSquare, BookOpen, ShoppingCart, Heart, Store } from "lucide-react";
+import { Home, MessageSquare, BookOpen, ShoppingCart, Heart, ShoppingBag } from "lucide-react";
 
 interface Link {
     id: number;
@@ -28,8 +28,8 @@ export const NavLinks: Link[] = [
     },
     {
         id: 4,
-        title: "E-shop",
-        icon: Store,
+        title: "E-Shop",
+        icon: ShoppingBag,
         path: "products"
     },
     {
