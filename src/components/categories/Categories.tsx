@@ -27,7 +27,7 @@ const Categories = ({ onCategorySelect,selectedCategory }: CategoriesProps) => {
     };
 
     return (
-        <div className="flex gap-2 flex-wrap my-5 justify-center"
+        <div className="flex gap-2 flex-wrap my-5 "
         role="group" aria-label='categort filter'>
             <button
                 className={`w-28 h-10 rounded ${
